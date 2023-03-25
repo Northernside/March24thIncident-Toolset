@@ -30,7 +30,9 @@ function checkTempNames(i) {
                             avatar_url: "",
                             content: `New \`tempusername${i}\` was found!\n**UUID**: \`${json.id}\``
                         })
-                    }).then(_res => {}).catch(_err => {});
+                    }).then(_res => {}).catch(_err => {}).finally(() => {
+                        fs.writeFileSync("data/new_users_0_99.json", JSON.stringify(users), "utf-8");
+                    });
                 }
             }).catch(err => {
                 console.log(`API returned an error:\n${err}`);
@@ -41,5 +43,4 @@ function checkTempNames(i) {
         if (i < 100) checkTempNames(i);
         else checkTempNames(0);
     }, 1500);
-    fs.writeFileSync("data/new_users_0_99.json", JSON.stringify(users), "utf-8");
 }
