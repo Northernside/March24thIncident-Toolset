@@ -1,11 +1,12 @@
 {
-    "name": "saveinvalids",
-    "module": "save.ts",
+    "name": "24thmarchincident",
+    "module": "save.mjs",
     "type": "module",
     "devDependencies": {
         "bun-types": "canary"
     },
     "dependencies": {
+        "dotenv": "^16.0.3",
         "msmc": "^4.1.0"
     }
 }
