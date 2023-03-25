@@ -5,7 +5,9 @@ dotenv.config();
 
 import pattern_a_ignore from "../data/users_000_999.json" assert { type: "json" };
 import pattern_b_ignore from "../data/users_0_99.json" assert { type: "json" };
-const full_ignore = [...pattern_a_ignore, ...pattern_b_ignore];
+let newIgnores_a = fs.readFileSync("data/new_users_000_999.json"),
+    newIgnores_b = fs.readFileSync("data/new_users_0_99.json"),
+    full_ignore = [...pattern_a_ignore, ...pattern_b_ignore, ...newIgnores_a, ...newIgnores_b];
 
 let users = [];
 
@@ -32,6 +34,9 @@ function checkTempNames(i) {
                             content: `New \`tempusername${suffix}\` was found!\n**UUID**: \`${json.id}\``
                         })
                     }).then(_res => {}).catch(_err => {}).finally(() => {
+                        newIgnores_a = fs.readFileSync("data/new_users_000_999.json");
+                        newIgnores_b = fs.readFileSync("data/new_users_0_99.json");
+                        full_ignore = [...pattern_a_ignore, ...pattern_b_ignore, ...newIgnores_a, ...newIgnores_b];
                         fs.writeFileSync("data/new_users_000_999.json", JSON.stringify(users), "utf-8");
                     });
                 }
