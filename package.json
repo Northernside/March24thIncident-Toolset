@@ -1,0 +1,11 @@
+{
+    "name": "saveinvalids",
+    "module": "save.ts",
+    "type": "module",
+    "devDependencies": {
+        "bun-types": "canary"
+    },
+    "dependencies": {
+        "msmc": "^4.1.0"
+    }
+}
