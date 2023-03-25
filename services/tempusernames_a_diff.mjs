@@ -5,7 +5,7 @@ dotenv.config();
 
 import pattern_a_ignore from "../data/users_000_100.json" assert { type: "json" };
 import pattern_b_ignore from "../data/users_0_99.json" assert { type: "json" };
-let newIgnores_a = JSON.parse(fs.readFileSync("data/new_users_000_99.json", "utf-8")),
+let newIgnores_a = JSON.parse(fs.readFileSync("data/new_users_000_100.json", "utf-8")),
     full_ignore = [...pattern_a_ignore, ...pattern_b_ignore, ...newIgnores_a];
 
 let users = [];
