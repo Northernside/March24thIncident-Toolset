@@ -40,6 +40,6 @@ function checkTempNames(i) {
         i++;
         if (i < 100) checkTempNames(i);
         else checkTempNames(0);
-    }, 750);
+    }, 1500);
     fs.writeFileSync("data/new_users_0_99.json", JSON.stringify(users), "utf-8");
 }
