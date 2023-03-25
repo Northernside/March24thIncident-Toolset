@@ -45,5 +45,5 @@ function checkTempNames(i) {
         i++;
         if (i < 100) checkTempNames(i);
         else checkTempNames(0);
-    }, 1500);
+    }, 1400);
 }
