@@ -33,9 +33,11 @@ function checkTempNames(i) {
                             content: `New \`tempusername${suffix}\` was found!\n**UUID**: \`${json.id}\``
                         })
                     }).then(_res => {}).catch(_err => {}).finally(() => {
+                        const prev = JSON.parse(fs.readFileSync("data/new_users_000_100.json", "utf-8") || "[]");
+                        let overwrite = [...users, ...prev]
+                        fs.writeFileSync("data/new_users_000_100.json", JSON.stringify(overwrite), "utf-8");
                         newIgnores_a = JSON.parse(fs.readFileSync("data/new_users_000_100.json", "utf-8"));
-                        full_ignore = [...pattern_a_ignore, ...pattern_b_ignore, ...newIgnores_a];
-                        fs.writeFileSync("data/new_users_000_100.json", JSON.stringify(users), "utf-8");
+                        full_ignore = [...pattern_a_ignore, ...pattern_b_ignore, ...newIgnores_a, ...overwrite];
                     });
                 }
             }).catch(err => {
