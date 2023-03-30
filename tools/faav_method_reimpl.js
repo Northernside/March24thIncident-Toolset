@@ -15,18 +15,22 @@ function checkNamesPatternA(i) {
                     if (stagResp.status === 200) {
                         const stagJson = await stagResp.json();
                         users.push(stagJson);
-                    }
+                    } else
+                        if (stagResp.status !== 404)
+                        console.log(`API returned an error:\n${stagResp.status}`);
                 }).catch(err => {
                     console.log(`API returned an error:\n${err}`);
                 });
-            }
+            } else
+                if (prodResp.status !== 404)
+                console.log(`API returned an error:\n${prodResp.status}`);
         }).catch(err => {
             console.log(`API returned an error:\n${err}`);
         });
 
+        console.log(i);
+        console.log(users);
         i++;
-        if (i < 1000) checkNamesPatternA(i);
-    }, 300);
+        if (i < 100) checkNamesPatternA(i);
+    }, 200);
 }
-
-console.log(users);
